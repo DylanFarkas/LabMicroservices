@@ -4,8 +4,12 @@ const axios = require('axios');
 const typeDefs = `
   type Query {
     service1: [String]
-    service2: String
+    service2: [String]
     service3: [String]
+    service4: [String]
+    service5: [String]
+    service6: [String]
+    service7: [String]
   }
 `;
 
@@ -14,39 +18,86 @@ const resolvers = {
     service1: async (parent, args, context, info) => {
       console.log(context.token);
       try {
-          const response = await axios.get('http://salchipapitas:5000/comestibles');
+          const response = await axios.get('http://bebidas:7000/bebidas');
           const data = response.data;
-          return [...data.papas, ...data.salchichas];
+          return [...data.bebidas];
       } catch (err) {
-          console.error("Error al obtener datos de salchipapitas", err);
+          console.error("Error al obtener datos de bebidas", err);
           return [];
       }
   },
-  service2: async () => {
-    try {
-        const response = await axios.get('http://besoscerezas:8080/besos');
-        const data = response.data;
-        let result = "Hola, soy servicio2 Besitos sabor cerezas! Aquí tienes algunos besos y sus frutas asociadas: ";
-        for (const [key, value] of Object.entries(data)) {
-            result += `Beso ${key} -> ${value}, `;
+
+    service2: async (parent, args, context, info) => {
+        console.log(context.token);
+        try {
+            const response = await axios.get('http://cereales:8080/cereales');
+            const data = response.data;
+            return [...data.cereales];
+        } catch (err) {
+            console.error("Error al obtener datos de cereales", err);
+            return [];
         }
-        return result.slice(0, -2); // Para eliminar la última coma y espacio
-    } catch (err) {
-        console.error("Error al obtener datos de besoscerezas", err);
-        return "Error al obtener datos de besoscerezas";
-    }
-  },
-  service3: async (parent, args, context, info) => {
-    console.log(context.token);
-    try {
-        const response = await axios.get('http://cachetadacontrucha:6000/trucha');
-        const data = response.data;
-        return [...data.trucha];
-    } catch (err) {
-        console.error("Error al obtener datos de cachetadas con trucha", err);
-        return [];
-    }
-  },
+    },
+
+    service3: async (parent, args, context, info) => {
+        console.log(context.token);
+        try {
+            const response = await axios.get('http://dulces:6000/dulces');
+            const data = response.data;
+            return [...data.dulces];
+        } catch (err) {
+            console.error("Error al obtener datos de dulces", err);
+            return [];
+        }
+    },
+
+    service4: async (parent, args, context, info) => {
+        console.log(context.token);
+        try {
+            const response = await axios.get('http://frutas:4000/frutas');
+            const data = response.data;
+            return [...data.frutas];
+        } catch (err) {
+            console.error("Error al obtener datos de frutas", err);
+            return [];
+        }
+    },
+
+    service5: async (parent, args, context, info) => {
+        console.log(context.token);
+        try {
+            const response = await axios.get('http://micro-manis:8000/manis');
+            const data = response.data;
+            return [...data.manis];
+        } catch (err) {
+            console.error("Error al obtener datos de manis", err);
+            return [];
+        }
+    },
+
+    service6: async (parent, args, context, info) => {
+        console.log(context.token);
+        try {
+            const response = await axios.get('http://quesos:9000/quesos');
+            const data = response.data;
+            return [...data.quesos];
+        } catch (err) {
+            console.error("Error al obtener datos de quesos", err);
+            return [];
+        }
+    },
+
+    service7: async (parent, args, context, info) => {
+        console.log(context.token);
+        try {
+            const response = await axios.get('http://vegetales:3080/vegetales');
+            const data = response.data;
+            return [...data.vegetales];
+        } catch (err) {
+            console.error("Error al obtener datos de vegetales", err);
+            return [];
+        }
+    },
  },
 };
 
