@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
         - name: authservice
-          image: your-authservice-image
+          image: ervincaravaliibarra/authservice:latest
           ports:
             - containerPort: 3000
           env:
@@ -98,7 +98,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: your-apigw-image
+          image: ervincaravaliibarra/apigw:latest
           ports:
             - containerPort: 4000
 
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
         - name: bebidas
-          image: your-bebidas-image
+          image: ervincaravaliibarra/bebidas:latest
           ports:
             - containerPort: 7000
 
@@ -166,7 +166,7 @@ spec:
     spec:
       containers:
         - name: cereales
-          image: your-cereales-image
+          image: ervincaravaliibarra/cereales:latest
           ports:
             - containerPort: 8080
 
@@ -200,7 +200,7 @@ spec:
     spec:
       containers:
         - name: dulces
-          image: your-dulces-image
+          image: ervincaravaliibarra/dulces:latest
           ports:
             - containerPort: 6000
 
@@ -234,7 +234,7 @@ spec:
     spec:
       containers:
         - name: frutas
-          image: your-frutas-image
+          image: ervincaravaliibarra/frutas:latest
           ports:
             - containerPort: 4080
 
@@ -268,7 +268,7 @@ spec:
     spec:
       containers:
         - name: micro-manis
-          image: your-micro-manis-image
+          image: ervincaravaliibarra/micro-manis:latest
           ports:
             - containerPort: 8000
 
@@ -302,7 +302,7 @@ spec:
     spec:
       containers:
         - name: quesos
-          image: your-quesos-image
+          image: ervincaravaliibarra/quesos:latest
           ports:
             - containerPort: 9000
 
@@ -336,6 +336,6 @@ spec:
     spec:
       containers:
         - name: vegetales
-          image: your-vegetales-image
+          image: ervincaravaliibarra/vegetales:latest
           ports:
             - containerPort: 3080
