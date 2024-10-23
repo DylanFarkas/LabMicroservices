@@ -3,6 +3,7 @@ services:
     build:
       context: ./apigw
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/apigw:latest
     ports:
       - "4000:4000"
     depends_on:
@@ -19,6 +20,7 @@ services:
   authservice:
     build:
       context: ./authservice
+    image: ervincaravaliibarra/authservice:latest  
     ports:
       - "3000:3000"
     depends_on:
@@ -32,6 +34,7 @@ services:
   bebidas:
     build:
       context: ./bebidas
+    image: ervincaravaliibarra/bebidas:latest
     ports:
       - "7000:7000"
     depends_on:
@@ -41,6 +44,7 @@ services:
     build:
       context: ./cereales
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/cereales:latest
     ports:
       - "8080:8080"
     depends_on:
@@ -50,6 +54,7 @@ services:
     build:
       context: ./dulces
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/dulces:latest
     ports:
       - "6000:6000"
     depends_on:
@@ -59,6 +64,7 @@ services:
     build:
       context: ./frutas
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/frutas:latest
     ports:
       - "4080:4080"
     depends_on:
@@ -68,6 +74,7 @@ services:
     build:
       context: ./micro-manis
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/micro-manis:latest
     ports:
       - "8000:8000"
     depends_on:
@@ -77,6 +84,7 @@ services:
     build:
       context: ./quesos
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/quesos:latest
     ports:
       - "9000:9000"
     depends_on:
@@ -86,6 +94,7 @@ services:
     build:
       context: ./vegetales
       dockerfile: Dockerfile
+    image: ervincaravaliibarra/vegetales:latest
     ports:
       - "3080:3080"
     depends_on:

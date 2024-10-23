@@ -1,0 +1,341 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    app: redis
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authservice
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: authservice
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authservice
+  template:
+    metadata:
+      labels:
+        app: authservice
+    spec:
+      containers:
+        - name: authservice
+          image: your-authservice-image
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REDIS_HOST
+              value: "redis"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 4000
+      targetPort: 4000
+  selector:
+    app: api
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: your-apigw-image
+          ports:
+            - containerPort: 4000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bebidas
+spec:
+  type: ClusterIP
+  ports:
+    - port: 7000
+      targetPort: 7000
+  selector:
+    app: bebidas
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bebidas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bebidas
+  template:
+    metadata:
+      labels:
+        app: bebidas
+    spec:
+      containers:
+        - name: bebidas
+          image: your-bebidas-image
+          ports:
+            - containerPort: 7000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cereales
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: cereales
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cereales
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cereales
+  template:
+    metadata:
+      labels:
+        app: cereales
+    spec:
+      containers:
+        - name: cereales
+          image: your-cereales-image
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dulces
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6000
+      targetPort: 6000
+  selector:
+    app: dulces
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dulces
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dulces
+  template:
+    metadata:
+      labels:
+        app: dulces
+    spec:
+      containers:
+        - name: dulces
+          image: your-dulces-image
+          ports:
+            - containerPort: 6000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frutas
+spec:
+  type: ClusterIP
+  ports:
+    - port: 4080
+      targetPort: 4080
+  selector:
+    app: frutas
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frutas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frutas
+  template:
+    metadata:
+      labels:
+        app: frutas
+    spec:
+      containers:
+        - name: frutas
+          image: your-frutas-image
+          ports:
+            - containerPort: 4080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-manis
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: micro-manis
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-manis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-manis
+  template:
+    metadata:
+      labels:
+        app: micro-manis
+    spec:
+      containers:
+        - name: micro-manis
+          image: your-micro-manis-image
+          ports:
+            - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quesos
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9000
+      targetPort: 9000
+  selector:
+    app: quesos
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quesos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quesos
+  template:
+    metadata:
+      labels:
+        app: quesos
+    spec:
+      containers:
+        - name: quesos
+          image: your-quesos-image
+          ports:
+            - containerPort: 9000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vegetales
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3080
+      targetPort: 3080
+  selector:
+    app: vegetales
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vegetales
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vegetales
+  template:
+    metadata:
+      labels:
+        app: vegetales
+    spec:
+      containers:
+        - name: vegetales
+          image: your-vegetales-image
+          ports:
+            - containerPort: 3080
