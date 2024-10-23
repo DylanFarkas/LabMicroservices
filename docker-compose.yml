@@ -1,0 +1,92 @@
+services:
+  api:
+    build:
+      context: ./apigw
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - authservice
+      - bebidas
+      - cereales
+      - dulces
+      - frutas
+      - micro-manis
+      - quesos
+      - vegetales
+      - redis
+
+  authservice:
+    build:
+      context: ./authservice
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+
+  bebidas:
+    build:
+      context: ./bebidas
+    ports:
+      - "7000:7000"
+    depends_on:
+      - redis
+
+  cereales:
+    build:
+      context: ./cereales
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+
+  dulces:
+    build:
+      context: ./dulces
+      dockerfile: Dockerfile
+    ports:
+      - "6000:6000"
+    depends_on:
+      - redis
+
+  frutas:
+    build:
+      context: ./frutas
+      dockerfile: Dockerfile
+    ports:
+      - "4080:4080"
+    depends_on:
+      - redis
+
+  micro-manis:
+    build:
+      context: ./micro-manis
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  quesos:
+    build:
+      context: ./quesos
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    depends_on:
+      - redis
+
+  vegetales:
+    build:
+      context: ./vegetales
+      dockerfile: Dockerfile
+    ports:
+      - "3080:3080"
+    depends_on:
+      - redis

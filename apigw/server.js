@@ -54,7 +54,7 @@ const resolvers = {
     service4: async (parent, args, context, info) => {
         console.log(context.token);
         try {
-            const response = await axios.get('http://frutas:4000/frutas');
+            const response = await axios.get('http://frutas:4080/frutas');
             const data = response.data;
             return [...data.frutas];
         } catch (err) {
